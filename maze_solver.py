@@ -6,22 +6,16 @@ import time
 ##########################################################TURNING IMAGE INTO MATRIX
 
 def get_maze_array(image_file):
-    # Open the image file and convert it to grayscale
     maze = Image.open(image_file).convert('L')
     
-    # Get the size of the maze image
     cols, rows = maze.size
     
-    # Convert the image to a binary matrix
     binary_matrix = maze.point(lambda p: p > 127 and 1)
     
-    # Resize the binary matrix (optional)
     binary_matrix = binary_matrix.resize((cols//i, rows//i), Image.NEAREST)
     
-    # Get the new size of the resized matrix
     cols, rows = binary_matrix.size
     
-    # Convert the binary matrix to a numpy array
     maze_array = np.array(binary_matrix)
     
     return maze_array
@@ -318,6 +312,7 @@ plt.axis('off')  # Turn off axis
 plt.savefig('solvedmaze.png', bbox_inches='tight', pad_inches=0)  # Save the image
 plt.show()
 #########################################################
+
 
 
 
